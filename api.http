@@ -1,0 +1,38 @@
+POST http://localhost:3002/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "username":"kt",
+  "password":"1234567",
+  "name":1234
+}
+
+###
+
+POST http://localhost:3002/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "password":"1234567",
+  "email":"ankitdube62@gmail.com",
+}
+
+
+
+
+
+#
+
+
+# get http://localhost:3002/get_user_and_profile 
+# Content-Type: application/json
+
+# {
+#   "token": "678106dfa6d49c0d2e5ccf16b59b287dee34c87e1327dfe4f2e1169220ae1e03"
+# }
+
+GET http://localhost:3002/get_user_and_profile HTTP/1.1
+Content-Type: application/json
+{
+  "token": "678106dfa6d49c0d2e5ccf16b59b287dee34c87e1327dfe4f2e1169220ae1e03"
+ }
