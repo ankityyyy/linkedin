@@ -2,7 +2,7 @@ import Dashboardlayout from "./Dashboardlayout";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAndProfile } from "../redux/feature/Slice.jsx";
-import styles from "../style/profile.module.css";
+import styles from '../style/Profile.module.css';
 import { useNavigate } from "react-router-dom";
 import server from "../env.js";
 
