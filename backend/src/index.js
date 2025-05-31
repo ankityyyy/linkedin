@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["http://localhost:5173"],  
+    origin: ["https://linkedin-frontend-hi4w.onrender.com"],  
     methods: "GET, POST, PUT,PATCH, DELETE",
   })
 );
