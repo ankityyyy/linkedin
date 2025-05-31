@@ -1,0 +1,124 @@
+.containet{
+     background:rgb(247, 247, 247);
+     padding: 1.3rem;
+     position: relative;
+     right: 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+/* .containerimg {
+  background: url("https://images.pexels.com/photos/14570124/pexels-photo-14570124.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 37vh;
+  width: 50rem;
+  border-radius: 20px;
+} */
+.containerimgurl{
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 50%;
+  position: relative;
+  bottom: -80%;
+  left: 8%;
+  /* right: 30px; */
+  text-align: center;
+}
+
+.containerimgurl>img{
+   position: relative;
+  /* bottom: -80%;
+  left: 8%; */
+  right: 85px;
+  
+}
+
+.profilecontainer{
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  right: 50px;
+  flex-direction: column;
+padding-top:50px ;
+
+}
+.postCard{
+ position: relative;
+right:90px;
+}
+
+.card{
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+ 
+}
+.card__profileContainer{
+  width: 3.4rem;
+  height: auto;
+  height: 3.4rem;
+  object-fit: cover;
+}
+.connectedButton{
+background-color: rgba(3,93,183,0.905);
+  outline: none;
+  border: 1px solid black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  display: flex;
+}
+
+.connectBtn{
+  background-color: rgba(197, 29, 29, 0.905);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+}
+
+.workhistory{
+  /* position:relative;
+  right: 10px; */
+  /* top: 150px; */
+  border-top: 1px solid rgb(179,179,179);
+}
+
+.workHistoryContainer{
+  display: flex;
+  flex-direction: row;
+  gap: 1.4rem;
+  /* padding-top: 1.4rem; */
+  /* width: 100%; */
+}
+
+.workHistoryCard{
+  
+ max-width: 300px;
+ max-height: 100px;
+  
+  border-radius: 10px;
+ background:white;
+     box-shadow: 10px 10px 15px rgb(173,173,173);
+     padding-bottom: 50px;
+     /* position: relative;
+     left: 40px; */
+}
+
+.workHistoryCard:hover{
+  transform: scale(1.1);
+}
+
+.pastwork{
+  border-bottom: 1px solid rgb(179,179,179);
+}

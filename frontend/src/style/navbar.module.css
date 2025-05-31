@@ -1,0 +1,40 @@
+.bottonjoin{
+
+}
+
+.container{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+}
+.navHeroLeft{
+     padding:10px ;
+     font-weight: bold;
+     cursor: pointer;
+}
+
+.navHeroLeft:hover{
+     opacity: 0.8;
+}
+.navHeroRight{
+     padding:10px ;
+     font-weight: bold;
+     cursor: pointer;
+}
+
+.navHeroRight:hover{
+     opacity: 0.8;
+}
+
+.NavBarFet{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 5px;
+     gap: 4px;
+     font-size: 20px;
+}
+
+.styles.nat{
+     padding-right:10px;
+}

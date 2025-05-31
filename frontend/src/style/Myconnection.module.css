@@ -1,0 +1,49 @@
+.DiscoverProfile{
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     height: 12vh;
+     border-radius: 10px;
+     overflow: hidden;
+     width:27vw;
+     border-radius: 10px;
+     background: white;
+     box-shadow: 10px 10px 15px rgb(173,173,173);
+     gap:9px;
+     margin-bottom: 8px;
+     
+     
+}
+.DiscoverProfilename{
+     display: flex;
+     flex-direction: column;
+     
+}
+.DiscoverProfileusername{
+     position: relative;
+     bottom: 17px;
+     cursor: pointer;
+}
+
+.Dashboardlayoutbutton{
+       height: 35px;
+     width: 90px;
+     background-color: #892937;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-top: 1px;
+  position: relative;
+  bottom: 4px;
+}
+.Dashboardlayoutbuttonaccept{
+ height: 35px;
+     width: 90px;
+     background-color: #298947;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin-top: 1px;
+  position: relative;
+  bottom: 4px;
+}
