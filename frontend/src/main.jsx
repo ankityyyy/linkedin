@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import store from './redux/app/Store.jsx';
 import { Provider } from 'react-redux'
 import HomePage from './components/HomePage.jsx'
-import UserLog from './components/userLog.jsx';
+import UserLog from "./components/UserLog.jsx"
 import Dashboard from './components/Dashboard.jsx';
 import NavBar from './components/navBar.jsx';
 import  Myconnection from './components/Myconnection.jsx'
