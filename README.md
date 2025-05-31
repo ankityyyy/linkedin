@@ -1,4 +1,4 @@
-# LinkedIn Clone Project
+# LinkedIn  Project
 
 This is a full-stack LinkedIn clone project with separate backend and frontend codebases.
 
