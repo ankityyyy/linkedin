@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserAndProfileAll} from '../redux/feature/Slice';
 import styles from '../style/Discover.module.css';
+import server from '../env';
 
 
 export default function Discover() {
@@ -33,7 +34,7 @@ export default function Discover() {
                   src={
                     authState.user.userId.profilePicture.url.startsWith("http")
                       ? authState.user.userId.profilePicture.url
-                      : `http://localhost:8080/${authState.user.userId.profilePicture.url}`
+                      : `${server}/${authState.user.userId.profilePicture.url}`
                   }
                   alt="Profile"
                   style={{

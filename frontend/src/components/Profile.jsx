@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserAndProfile } from "../redux/feature/Slice.jsx";
 import styles from "../style/profile.module.css";
 import { useNavigate } from "react-router-dom";
+import server from "../env.js";
+
+
 export default function Profile() {
   const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -42,7 +45,7 @@ export default function Profile() {
                   src={
                     authState.user.userId.profilePicture.url.startsWith("http")
                       ? authState.user.userId.profilePicture.url
-                      : `http://localhost:8080/${authState.user.userId.profilePicture.url}`
+                      : `${server}/${authState.user.userId.profilePicture.url}`
                   }
                   alt="Profile"
                   style={{

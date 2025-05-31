@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import server from "../../env";
 
 
 export const getAllPost = createAsyncThunk("post/getAllPost", async (_, thunkAPI) => {
   try {
-    const response = await axios.get("http://localhost:8080/Post");
+    const response = await axios.get(`${server}/Post`);
     return thunkAPI.fulfillWithValue(response.data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response?.data || { message: "Something went wrong" });
@@ -23,7 +24,7 @@ export const upLoadPost = createAsyncThunk("post", async (userData, thunkAPI) =>
     formData.append("media", file);
     console.log("Sending Post Data:", { body, file, token: localStorage.getItem("token") });
 
-    const response = await axios.post("http://localhost:8080/Post", formData, {
+    const response = await axios.post(`${server}Post`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data"
@@ -46,7 +47,7 @@ export const deletePost = createAsyncThunk("post/deletePost", async (userData, t
   try {
     const token = localStorage.getItem("token");
     let {id}=userData;
-    const response = await axios.delete(`http://localhost:8080/Post/${id}`,{ headers: {
+    const response = await axios.delete( `${server}/Post/${id}`,{ headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data"
     },}
@@ -64,7 +65,7 @@ export const incrementLike = createAsyncThunk("post/Like", async (post_id, thunk
   try {
     const token = localStorage.getItem("token");
     let {id}=post_id;
-    const response = await axios.post(`http://localhost:8080/Post/like/${id}`,{ headers: {
+    const response = await axios.post( `${server}/Post/like/${id}`,{ headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data"
     },}

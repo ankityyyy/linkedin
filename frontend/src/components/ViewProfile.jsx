@@ -5,10 +5,9 @@ import styles from "../style/view.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllPost } from "../redux/feature/PostSlice";
-import {
-  getMyConnectionRequest,
-  sendConnectionRequest,
-} from "../redux/feature/Slice.jsx";
+import {  getMyConnectionRequest,sendConnectionRequest,} from "../redux/feature/Slice.jsx";
+import server from "../env.js";
+
 
 export default function ViewProfile() {
   const { username } = useParams();
@@ -77,7 +76,7 @@ export default function ViewProfile() {
                   src={
                     authState.user.userId.profilePicture.url.startsWith("http")
                       ? authState.user.userId.profilePicture.url
-                      : `http://localhost:8080/${authState.user.userId.profilePicture.url}`
+                      :  `${server}/${authState.user.userId.profilePicture.url}`
                   }
                   alt="Profile"
                   style={{
@@ -189,185 +188,3 @@ export default function ViewProfile() {
   );
 }
 
-// import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import Dashboardlayout from "./Dashboardlayout";
-// import styles from "../style/view.module.css";
-// import { useSelector, useDispatch } from "react-redux";
-// import { getAllPost } from "../redux/feature/PostSlice";
-// import {
-//   getMyConnectionRequest,
-//   sendConnectionRequest,
-// } from "../redux/feature/Slice.jsx";
-
-// export default function ViewProfile() {
-//   const { username } = useParams();
-//   const dispatch = useDispatch();
-//   const postReducer = useSelector((state) => state.post);
-//   const authState = useSelector((state) => state.auth);
-//   const [userposts, setUserposts] = useState([]);
-//   const [userProfile, setUserProfile] = useState(null);
-//   const [isConnectionNull, setIsConnectionNull] = useState(false);
-//   const [isCurrentUserInConnection, setIsCurrentUserInConnection] =
-//     useState(false);
-
-//   const getUserPost = async () => {
-//     await dispatch(getAllPost());
-//     await dispatch(
-//       getMyConnectionRequest({ token: localStorage.getItem("token") })
-//     );
-//   };
-
-//   const getUserProfile = async () => {
-//     try {
-//       const res = await fetch(
-//         `http://localhost:8080/api/profile/${username}`,
-//         {
-//           headers: {
-//             Authorization: `Bearer ${localStorage.getItem("token")}`,
-//           },
-//         }
-//       );
-//       const data = await res.json();
-//       setUserProfile(data.profile);
-
-//       if (data.connectionStatus === null) {
-//         setIsConnectionNull(true);
-//       }
-//       if (data.connectionStatus === true) {
-//         setIsCurrentUserInConnection(true);
-//       }
-//     } catch (error) {
-//       console.error("Error fetching user profile:", error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     getUserPost();
-//     getUserProfile();
-//   }, []);
-
-//   useEffect(() => {
-//     const posts = postReducer.post.filter(
-//       (posts) => posts.userId.username === username
-//     );
-//     setUserposts(posts);
-//   }, [postReducer.post]);
-
-//   return (
-//     <Dashboardlayout>
-//       <div className={styles.containet}>
-//         <div className={styles.containerimg}>
-//           <div className={styles.containerimgurl}>
-//             <img
-//               src={`http://localhost:8080/${userProfile?.userId?.profilePicture?.url}`}
-//               alt="Profile"
-//               style={{
-//                 height: "115px",
-//                 width: "115px",
-//                 borderRadius: "50%",
-//                 objectFit: "cover",
-//               }}
-//             />
-//           </div>
-//         </div>
-//       </div>
-
-//       <div className={styles.profilecontainer}>
-//         <div style={{ display: "flex", position: "relative", right: "45px" }}>
-//           <div style={{ flex: "0.8" }}>
-//             <div
-//               style={{
-//                 display: "flex",
-//                 alignItems: "center",
-//                 width: "fit-content",
-//                 gap: "1.2rem",
-//               }}
-//             >
-//               <h2>{userProfile?.userId?.name}</h2>
-//               <p style={{ color: "gray" }}>
-//                 {userProfile?.userId?.username}
-//               </p>
-//             </div>
-
-//             {isCurrentUserInConnection ? (
-//               <button className={styles.connectedButton}>
-//                 {isConnectionNull ? "Pending" : "Connected"}
-//               </button>
-//             ) : (
-//               <button
-//                 onClick={() => {
-//                   dispatch(
-//                     sendConnectionRequest({
-//                       token: localStorage.getItem("token"),
-//                       connectionId: userProfile.userId._id,
-//                     })
-//                   );
-//                 }}
-//                 className={styles.connectBtn}
-//               >
-//                 Connect
-//               </button>
-//             )}
-
-//             <div>
-//               <p>{userProfile?.bio}</p>
-//             </div>
-//           </div>
-
-//           <div style={{ flex: "0.2" }}>
-//             {userposts.map((post) => (
-//               <div key={post._id} className={styles.postCard}>
-//                 <h3>Recent Activity</h3>
-//                 <div className={styles.card}>
-//                   <div className={styles.card__profileContainer}>
-//                     {post.media !== "" ? (
-//                       <img
-//                         alt="Post"
-//                         src={`https://res.cloudinary.com/dl8mm2ypi/image/upload/${post.media}`}
-//                         style={{ height: "70px", width: "70px" }}
-//                       />
-//                     ) : (
-//                       <div style={{ width: "3.4rem", height: "3.4rem" }}></div>
-//                     )}
-//                   </div>
-//                   <p>{post.body}</p>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </Dashboardlayout>
-//   );
-// }
-
-// <button
-//   onClick={() => {
-//     console.log("on click work")
-//     dispatch(
-//       sendConnectionRequest({
-//         token: localStorage.getItem("token"),user_id: authState.user.userId._id,
-//       })
-//     );
-//   }}
-//   className={styles.connectBtn}
-// >
-//   Connect
-// </button>
-
-// !isOwnProfile && (
-//                 <button
-//                   onClick={() => {
-//                     dispatch(
-//                       sendConnectionRequest({
-//                         token: localStorage.getItem("token"),
-//                         user_id: viewedUser._id,
-//                       })
-//                     );
-//                   }}
-//                   className={styles.connectBtn}
-//                 >
-//                   Connect
-//                 </button>
-//               )

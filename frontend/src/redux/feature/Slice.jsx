@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import server from "../../env";
 
 export const signup = createAsyncThunk(
   "auth/signup",
   async (userData, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/register",
+        `${server}/register`,
         userData,
         {
           headers: {
@@ -26,7 +27,7 @@ export const login = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "http://localhost:8080/login",
+       `${server}/login`,
         userData,
         {
           headers: {
@@ -49,7 +50,7 @@ export const getUserAndProfile = createAsyncThunk(
   async (userId, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/users/profile?token=${userId}`
+         `${server}/users/profile?token=${userId}`
       );
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
@@ -64,7 +65,7 @@ export const getUserAndProfileAll = createAsyncThunk(
   "post/getUserAndProfileAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`http://localhost:8080/users/profiles`);
+      const response = await axios.get(`${server}/users/profiles`);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -79,7 +80,7 @@ export const sendConnectionRequest = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await axios.post(
-        `http://localhost:8080/users/connections`,
+         `${server}/users/connections`,
         {
           token: user.token,
           connectionId: user.user_id,
@@ -100,7 +101,7 @@ export const getMyConnectionRequest = createAsyncThunk(
     try {
       console.log("Making API call with token:", user.token);
       const response = await axios.get(
-        `http://localhost:8080/users/connections/sent`,
+        `${server}/users/connections/sent`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -122,7 +123,7 @@ export const connectionsreceived = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/users/connections/received`,
+        `${server}/users/connections/received`,
         {
           token: user.token,
         }
@@ -141,7 +142,7 @@ export const acceptConnectionRequest = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await axios.post(
-        `http://localhost:8080/users/connections/respond`,
+         `${server}/users/connections/respond`,
         {
           token: user.token,
           connection_Id: user.connectionId,
@@ -166,7 +167,7 @@ export const updateProfileData = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const response = await axios.patch(
-        "http://localhost:8080/users/profile/data",
+      `${server}users/profile/data`,
         profileData,
         {
           headers: {
@@ -192,7 +193,7 @@ export const uploadProfilePicture = createAsyncThunk(
       formData.append("image", file);
 
       const response = await axios.patch(
-        "http://localhost:8080/users/profile-pictureupload",
+        `${server}/users/profile-pictureupload`,
         formData,
         {
           headers: {

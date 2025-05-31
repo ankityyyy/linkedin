@@ -13,6 +13,7 @@ import {
 } from "../redux/feature/Slice";
 import Dashboardlayout from "./Dashboardlayout";
 import styles from "../style/Dashboard.module.css";
+import server from "../env";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ export default function Dashboard() {
                   src={
                     authState.user.userId.profilePicture.url.startsWith("http")
                       ? authState.user.userId.profilePicture.url
-                      : `http://localhost:8080/${authState.user.userId.profilePicture.url}`
+                      : `${server}/${authState.user.userId.profilePicture.url}`
                   }
                   alt="Profile"
                   style={{
@@ -120,7 +121,7 @@ export default function Dashboard() {
                             "http"
                           )
                             ? posts?.userId.profilePicture.url
-                            : `http://localhost:8080/${posts?.userId.profilePicture.url}`
+                            :`${server}/${posts?.userId.profilePicture.url}`
                         }
                         alt="Profile"
                         style={{

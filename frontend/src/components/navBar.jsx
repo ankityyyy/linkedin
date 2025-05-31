@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector,useDispatch } from "react-redux";
 import {  reset } from '../redux/feature/Slice';
 
+
 export default function NavBar() {
      const navigate = useNavigate();
      const dispatch=useDispatch();

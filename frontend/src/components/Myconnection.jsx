@@ -4,6 +4,7 @@ import { getMyConnectionRequest } from "../redux/feature/Slice";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from '../style/Myconnection.module.css';
+import server from '../env';
 
 export default function Myconnection() {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ export default function Myconnection() {
           return (
             <div key={user?._id} className={styles.DiscoverProfile}>
               <img
-                src={`http://localhost:8080/${profilePicUrl || "uploads/default.jpg"}`}
+                src={ `${server}/${profilePicUrl || "uploads/default.jpg"}`}
                 alt="profile"
                 style={{ width: "80px", height: "80px", borderRadius: "50%" }}
               />
