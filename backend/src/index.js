@@ -55,6 +55,10 @@ app.use("/", userRoutes);
 app.use("/users", profileRoutes);
 app.use("/Post", postRoutes)
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the backend!');
+});
+
 
 // app.use((req, res, next) => {
 //   if (!req.route) {
@@ -69,7 +73,6 @@ app.use("/Post", postRoutes)
 
 
 app.use((req, res, next) => {
-  console.warn(`🚫 Route not found: ${req.method} ${req.originalUrl}`);
   next(new ExpressError("Page not found", StatusCodes.NOT_FOUND));
 });
 
