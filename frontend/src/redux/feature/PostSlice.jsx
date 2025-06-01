@@ -24,7 +24,7 @@ export const upLoadPost = createAsyncThunk("post", async (userData, thunkAPI) =>
     formData.append("media", file);
     console.log("Sending Post Data:", { body, file, token: localStorage.getItem("token") });
 
-    const response = await axios.post(`${server}Post`, formData, {
+    const response = await axios.post(`${server}/Post`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data"
