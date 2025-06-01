@@ -79,6 +79,7 @@ export const sendConnectionRequest = createAsyncThunk(
   "post/sendConnectionRequest",
   async (user, thunkAPI) => {
     try {
+      console.log("send connetion",user.token,"..",user.user_id,)
       const response = await axios.post(
          `${server}/users/connections`,
         {
