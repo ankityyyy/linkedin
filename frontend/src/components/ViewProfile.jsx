@@ -42,7 +42,7 @@ export default function ViewProfile() {
     (profile) => profile.userId?.username === username
   );
 
-  console.log(userProfile);
+  console.log("it not work",viewedUser?._id);
 
   // const isOwnProfile = viewedUser?._id === authState?.user?.userId?._id;
   const isOwnProfile =
@@ -52,7 +52,7 @@ export default function ViewProfile() {
     if (!viewedUser || !authState?.connections) return;
 
     const existingConnection = authState.connections.find(
-      (conn) => conn.connectionId._id === viewedUser._id
+      (conn) => conn.connectionId._id === viewedUser?._id
     );
 
     if (existingConnection) {
@@ -116,7 +116,7 @@ export default function ViewProfile() {
                     dispatch(
                       sendConnectionRequest({
                         token: localStorage.getItem("token"),
-                        user_id: viewedUser._id,
+                        user_id: viewedUser?._id,
                       })
                     );
                   }}

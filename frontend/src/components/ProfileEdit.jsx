@@ -28,11 +28,11 @@ export default function ProfileEdit() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Submitting profile update:", {
-  name: formData.name,
-  bio: formData.bio,
-  pastWork: formData.pastWork,
-});
+//     console.log("Submitting profile update:", {
+//   name: formData.name,
+//   bio: formData.bio,
+//   pastWork: formData.pastWork,
+// });
 
 
     // Dispatch text data update

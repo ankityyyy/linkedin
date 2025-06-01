@@ -21,7 +21,7 @@ export default function Dashboard() {
 
   const authState = useSelector((state) => state.auth);
   const postState = useSelector((state) => state.post);
-  console.log(authState.user);
+  
 
   const [post, setPost] = useState("");
   const [fileContent, setFileContent] = useState();
@@ -46,7 +46,7 @@ export default function Dashboard() {
     }
   }, [authState.isToken]);
 
-  console.log("profile", authState.user?.userId?.profilePicture?.url);
+
 
   return (
     <>
