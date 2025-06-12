@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://linkedin-frontend-hi4w.onrender.com"],  
+    origin: ["http://localhost:5173"],  
     methods: "GET, POST, PUT,PATCH, DELETE",
   })
 );
@@ -74,7 +74,7 @@ app.get('/', (req, res) => {
 
 app.use((req, res, next) => {
   next(new ExpressError("Page not found", StatusCodes.NOT_FOUND));
-});
+}); 
 
 
 

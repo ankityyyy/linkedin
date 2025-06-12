@@ -23,7 +23,7 @@ const profileSchema = new mongoose.Schema({
      userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
      bio: {
            type: String,
-            default: "" 
+            default: ""  
           },
      currentPost: {
           type: String,
