@@ -2,15 +2,16 @@
 name: Backend CI
 
 on:
+  workflow_dispatch:   # ✅ lets you run manually from GitHub Actions
   push:
     branches:
       - main
     paths:
-      - 'backend/**'  # Only trigger when files in backend folder change
+      - 'backend/**'   # still triggers automatically when backend files change
 
 jobs:
   build:
-    runs-on: self-hosted  # Ensure your runner is running
+    runs-on: self-hosted  # will use your EC2 runner when idle
 
     strategy:
       matrix:
@@ -24,7 +25,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: backend/package-lock.json  # Cache npm modules inside backend
+        cache-dependency-path: backend/package-lock.json
 
     - name: Install dependencies
       run: |
@@ -35,4 +36,3 @@ jobs:
       run: |
         cd backend
         npm run build --if-present
-
