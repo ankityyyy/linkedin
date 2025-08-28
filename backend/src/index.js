@@ -56,7 +56,11 @@ app.use("/users", profileRoutes);
 app.use("/Post", postRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Welcome to the backend!');
+  res.send('Welcome to the backend! ');
+});
+
+app.get('/ci', (req, res) => {
+  res.send('Welcome to the backend! ci/ci test ');
 });
 
 
