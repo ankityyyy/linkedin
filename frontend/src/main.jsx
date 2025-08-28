@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import store from './redux/app/Store.jsx';
+import store from './redux/app/Store.jsx'; 
 import { Provider } from 'react-redux'
 import HomePage from './components/HomePage.jsx'
 import UserLog from "./components/UserLog.jsx"

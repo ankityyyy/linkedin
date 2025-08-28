@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "https://graceful-kleicha-18739b.netlify.app", 
+    origin: ["https://linkedin-frontend-hi4w.onrender.com","http://localhost:5173"], 
     methods: "GET, POST, PUT,PATCH, DELETE",
   })
 );
