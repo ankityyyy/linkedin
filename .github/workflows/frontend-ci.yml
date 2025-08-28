@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # will use your EC2 runner when idle
+    runs-on: [self-hosted, Linux, X64]
 
     strategy:
       matrix:
