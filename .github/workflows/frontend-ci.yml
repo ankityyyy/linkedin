@@ -1,0 +1,37 @@
+name: Frontend CI
+
+on:
+  workflow_dispatch:   # ✅ lets you run manually from GitHub Actions
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'   # triggers automatically when frontend files change
+
+jobs:
+  build:
+    runs-on: self-hosted  # will use your EC2 runner when idle
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json  # ✅ corrected
+
+    - name: Install dependencies
+      run: |
+        cd frontend
+        npm ci  # or npm install if no package-lock.json
+
+    - name: Build
+      run: |
+        cd frontend
+        npm run build --if-present
