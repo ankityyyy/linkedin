@@ -60,7 +60,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/ci', (req, res) => {
-  res.send('Welcome to the backend! ci/ci test ');
+  res.send('Welcome to the backend! ci/ci  ');
 });
 
 
