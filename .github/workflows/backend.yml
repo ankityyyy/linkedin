@@ -51,4 +51,4 @@ jobs:
     - name: Restart Backend with PM2
       run: |
         cd backend
-        sudo pm2 restart backend || sudo pm2 start npm --name backend -- run start
+        sudo pm2 restart backend || sudo pm2 start src/index.js --name backend
