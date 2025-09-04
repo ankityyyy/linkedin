@@ -16,21 +16,30 @@ const dbUrl = process.env.ATLASDB_URL;
 
 
 
-if(process.env.NODE_ENV!="production"){
-  require('dotenv').config()
+// if(process.env.NODE_ENV!="production"){
+//   require('dotenv').config()
+// }
+
+
+
+
+
+
+if (!dbUrl) {
+  console.error("❌ ATLASDB_URL is not defined in .env");
+  process.exit(1);
 }
 
-
-
-
-// MongoDB connection
-const url = "mongodb://127.0.0.1:27017/linkedin";
 async function main() {
-  try { 
-    await mongoose.connect(dbUrl);
-    console.log("Connection successful");
+  try {
+    await mongoose.connect(dbUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB Atlas connection successful");
   } catch (err) {
-    console.log("MongoDB Connection Error:", err);
+    console.error("❌ MongoDB Connection Error:", err.message);
+    process.exit(1);
   }
 }
 main();
