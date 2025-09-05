@@ -62,7 +62,7 @@ export default function UserLog() {
             <div className={styles.cardContainer_left}>
               <p className={styles.cardContainer_leftheding}>
                 {" "}
-                {isLogInMethod ? "Log In" : "Sign Up"}
+                {isLogInMethod ? "LogIn" : "Sign Up"}
               </p>
               {/* {authState.message && (
                 <p className={styles.message}>{authState.message}</p>
