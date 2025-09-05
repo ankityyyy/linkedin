@@ -1,12 +1,12 @@
 name: frontend CI/CD
 
 on:
-  workflow_dispatch:   # run manually
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - 'frontend/**'   # runs only when frontend code changes
+      - 'frontend/**'
 
 jobs:
   build:
@@ -23,26 +23,24 @@ jobs:
         cache: 'npm'
         cache-dependency-path: frontend/package-lock.json
 
-    - name: Install dependencies
+    - name: Install dependencies & Build frontend
       run: |
         cd frontend
         npm ci
+        npm run build
 
-    - name: Build Frontend
+    - name: Clean workspace (free space)
       run: |
-        cd frontend
-        npm run build --if-present
+        rm -rf frontend/node_modules
+        docker system prune -af || true
+        docker volume prune -f || true
+        docker builder prune -af || true
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Free up Docker space
-      run: |
-         docker system prune -af || true
-         docker volume prune -f || true
-         docker builder prune -af || true   
 
     - name: Build Docker image
       run: docker build -f frontend/Dockerfile -t ankitdockerd/frontend:latest frontend
@@ -50,7 +48,6 @@ jobs:
     - name: Push Docker image
       run: docker push ankitdockerd/frontend:latest
 
-    # Optional: Deploy with PM2 or Nginx
     - name: Restart Frontend
       run: |
         pm2 restart frontend || pm2 start npm --name "frontend" -- start
